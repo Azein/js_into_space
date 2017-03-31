@@ -1,0 +1,50 @@
+
+@import "../../node_modules/normalize.css/normalize.css";
+
+
+html { font-size: 16px; }
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", "Arial", "Tahoma", "sans-serif";
+  line-height: 1.42857;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.rootNode,
+ {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.lb_container {
+  position: absolute;
+  top: 0;
+}
+
+i {
+  user-select: none;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
