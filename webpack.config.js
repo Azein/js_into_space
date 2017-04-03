@@ -1,17 +1,24 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin");
 
 module.exports = {
   context: resolve(__dirname, 'src'),
 
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './index.js'
-  ],
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './index.js'
+    ],
+    vendor: [
+      'react-hot-loader/patch',
+      'react', 'react-dom', 'three', 'react-three-renderer'
+    ]
+  },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -20,7 +27,7 @@ module.exports = {
 
   devServer: {
     hot: true,
-    stats: 'errors-only',
+    stats: true,
     contentBase: resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -46,5 +53,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new CommonsPlugin({
+       name: 'vendor',
+       filename: 'vendor.js'
+     })
   ],
 };
