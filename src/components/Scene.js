@@ -25,29 +25,26 @@ export default class Scene extends React.Component {
   }
 
   render() {
-    const width = this.props.width
-    const height = this.props.height
+    const { width, height } = this.props
 
-    return (<React3
-      mainCamera="camera"
-      width={width}
-      height={height}
-
-      onAnimate={this._onAnimate}
-    >
-      <scene>
-        <perspectiveCamera
-          name="camera"
-          fov={75}
-          aspect={width / height}
-          near={0.1}
-          far={1000}
-
-          position={this.cameraPosition}
+    return (
+      <React3
+        mainCamera="camera"
+        width={width}
+        height={height}
+        alpha
+        onAnimate={this._onAnimate}
+      >
+        <scene>
+          <perspectiveCamera
+            name="camera"
+            fov={75}
+            aspect={width / height}
+            near={0.1}
+            far={1000}
+            position={this.cameraPosition}
         />
-        <mesh
-          rotation={this.state.cubeRotation}
-        >
+        <mesh rotation={this.state.cubeRotation} >
           <boxGeometry
             width={1}
             height={1}
